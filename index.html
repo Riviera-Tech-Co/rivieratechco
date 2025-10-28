@@ -4,7 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Riviera Tech Co. - Santa Barbara's only MSP that handles your business IT, kids' internet safety, and aging parents' tech support. One relationship. Three problems solved.">
+    <meta name="description" content        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+            
+            .price-box {
+                margin-bottom: 2rem;
+            }
+        } Tech Co. - Santa Barbara's only MSP that handles your business IT, kids' internet safety, and aging parents' tech support. One relationship. Three problems solved.">
     <link rel="icon" type="image/jpg" href="logo.jpg">
     <title>Riviera Tech Co. | Santa Barbara IT Support for Your Business & Family</title>
     <style>
@@ -179,25 +188,103 @@
             text-align: center;
         }
         
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+        
         .price-box {
             background: white;
-            max-width: 600px;
-            margin: 2rem auto;
-            padding: 3rem;
+            padding: 2.5rem;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .price-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .price-box.featured {
+            border: 2px solid #1a4d80;
+            position: relative;
+        }
+        
+        .featured-tag {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #ff6b35;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .tier-name {
+            color: #1a4d80;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
         }
         
         .price {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: #1a4d80;
             font-weight: bold;
             margin-bottom: 1rem;
         }
         
         .price-details {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #666;
+            flex-grow: 1;
+        }
+        
+        .price-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+            text-align: left;
+        }
+        
+        .price-details li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .price-details li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #1a4d80;
+        }
+        
+        .price-details .target {
+            font-style: italic;
+            color: #888;
+            margin-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+            
+            .price-box {
+                margin-bottom: 2rem;
+            }
+        }
             margin-bottom: 2rem;
         }
         
@@ -360,17 +447,67 @@
     <section class="pricing">
         <div class="container">
             <h2 class="section-title">Simple, Predictable Pricing</h2>
-            <div class="price-box">
-                <div class="price">Starting at $500/month</div>
-                <div class="price-details">
-                    <p><strong>Family Tech Package includes:</strong></p>
-                    <p>✓ Up to 10 office devices<br>
-                    ✓ Unlimited remote support<br>
-                    ✓ 2 on-site visits/month<br>
-                    ✓ Family tech support for immediate household<br>
-                    ✓ No surprise bills or hourly charges</p>
+            <div class="pricing-grid">
+                <!-- Essential Business IT -->
+                <div class="price-box">
+                    <div>
+                        <h3 class="tier-name">Essential Business IT</h3>
+                        <div class="price">$350/month</div>
+                        <div class="price-details">
+                            <ul>
+                                <li>Up to 5 office devices</li>
+                                <li>Network management & security</li>
+                                <li>Remote support (4-hour response)</li>
+                                <li>1 on-site visit/month</li>
+                                <li>Basic backup & monitoring</li>
+                            </ul>
+                            <p class="target">For: Small offices that just need IT, no family needs</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="cta-button">Get Started</a>
                 </div>
-                <a href="#contact" class="cta-button">Get Your Custom Quote</a>
+
+                <!-- Family Tech Package -->
+                <div class="price-box featured">
+                    <div class="featured-tag">Most Popular</div>
+                    <div>
+                        <h3 class="tier-name">Family Tech Package</h3>
+                        <div class="price">$500/month</div>
+                        <div class="price-details">
+                            <ul>
+                                <li>Up to 10 office devices</li>
+                                <li>Everything in Essential +</li>
+                                <li>Kids' internet safety & parental controls</li>
+                                <li>Senior parent tech support</li>
+                                <li>2 on-site visits/month</li>
+                                <li>Unlimited remote support</li>
+                            </ul>
+                            <p class="target">For: Your target customer - juggling all three problems</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="cta-button">Get Started</a>
+                </div>
+
+                <!-- Premium Business + Family -->
+                <div class="price-box">
+                    <div>
+                        <h3 class="tier-name">Premium Business + Family</h3>
+                        <div class="price">$850/month</div>
+                        <div class="price-details">
+                            <ul>
+                                <li>Up to 20 office devices</li>
+                                <li>Everything in Family Tech Package +</li>
+                                <li>Priority support (2-hour response)</li>
+                                <li>4 on-site visits/month</li>
+                                <li>Advanced security & compliance</li>
+                                <li>Quarterly tech strategy sessions</li>
+                                <li>Extended family support</li>
+                            </ul>
+                            <p class="target">For: Larger offices or multi-location families</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="cta-button">Get Started</a>
+                </div>
             </div>
         </div>
     </section>
